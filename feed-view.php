@@ -1,10 +1,10 @@
 <?php
 /**
- * survey-view.php along with index.php creates an list/view application
+ * feed-view.php along with index.php creates an list/view application
  * 
  * @package SurveySez
- * @author Damien Sudol <damien.sudol@gmail.com>
- * @version 1 2016/07/25
+ * @author Damien, Tracy, Daniel
+ * @version 1 2016/08/07
  * @link http://www.damiendev.net/
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @see index.php
@@ -76,14 +76,9 @@ class FeedCategory
 
         @mysqli_free_result($result); # We're done with the data! 
         
-        //start of question work
-        /*
     
-select q.QuestionID, q.Question from sm16_questions q inner join sm16_surveys s on s.SurveyID = q.SurveyID where s.SurveyID = 1
-        */
         
-        
-         //$sql = "select * from sm16_surveys where SurveyID = " . $id; 
+    
            $sql = "SELECT * FROM sm16_feeds WHERE FCID = " . $id;
           
 
@@ -93,13 +88,10 @@ select q.QuestionID, q.Question from sm16_questions q inner join sm16_surveys s 
 
         if(mysqli_num_rows($result) > 0)
             {#records exist - process
-           // $this->SurveyID = $id;
-	       // $this->isValid = true;	
+         	
 	           while ($row = mysqli_fetch_assoc($result))
                {
-                   //$this->Title = dbOut($row['Title']); 
-                   //$this->Description = dbOut($row['Description']);
-                   //$this->Feeds[] = new
+               
                    $Feeds[] = new Feed($row['FeedID'],dbOut($row['FeedURL']),dbOut($row['FeedTitle'])); 
 	           }
              
@@ -108,7 +100,7 @@ select q.QuestionID, q.Question from sm16_questions q inner join sm16_surveys s 
          $max =  sizeof($Feeds);
             for($i=0; $i<$max;$i++){
                 
-  //echo '<div align="center> <a href=""feed.php""> <h3>' . $Feeds[$i]->FeedTitle . '</h3></a>';
+
 
                 echo '<div align="center"><a href="' . VIRTUAL_PATH. 'p3/feed-display.php?id=' .
                     $Feeds[$i]->FeedID . '">' . $Feeds[$i]->FeedTitle . '</a>';

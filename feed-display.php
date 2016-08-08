@@ -3,7 +3,7 @@
  * index.php is a model for largely static PHP pages 
  *
  * @package nmCommon
- * @author Bill Newman <williamnewman@gmail.com>
+ * @author Damien, Tracy, Daniel
  * @version 2.091 2011/06/17
  * @link http://www.newmanix.com/
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License ("OSL") v. 3.0
@@ -24,19 +24,6 @@ if(isset($_GET['id']) && (int)$_GET['id'] > 0){#proper data must be on querystri
 
 
 
-/*
-$config->metaDescription = 'Web Database ITC281 class website.'; #Fills <meta> tags.
-$config->metaKeywords = 'SCCC,Seattle Central,ITC281,database,mysql,php';
-$config->metaRobots = 'no index, no follow';
-$config->loadhead = ''; #load page specific JS
-$config->banner = ''; #goes inside header
-$config->copyright = ''; #goes inside footer
-$config->sidebar1 = ''; #goes inside left side of page
-$config->sidebar2 = ''; #goes inside right side of page
-$config->nav1["page.php"] = "New Page!"; #add a new page to end of nav1 (viewable this page only)!!
-$config->nav1 = array("page.php"=>"New Page!") + $config->nav1; #add a new page to beginning of nav1 (viewable this page only)!!
-*/
-
 # END CONFIG AREA ---------------------------------------------------------- 
 
 get_header(); #defaults to theme header or header_inc.php
@@ -51,13 +38,10 @@ get_header(); #defaults to theme header or header_inc.php
 
         if(mysqli_num_rows($result) > 0)
             {#records exist - process
-           // $this->SurveyID = $id;
-	       // $this->isValid = true;	
+      
 	           while ($row = mysqli_fetch_assoc($result))
                {
-                   //$this->Title = dbOut($row['Title']); 
-                   //$this->Description = dbOut($row['Description']);
-                   //$this->Feeds[] = new
+                  
                    $URL = dbOut($row['FeedURL']);
                       
 	           }
@@ -65,12 +49,6 @@ get_header(); #defaults to theme header or header_inc.php
             }
 
 
-
-
-
-
-//read-feed-simpleXML.php
-//our simplest example of consuming an RSS feed
 
   $request = $URL;
   $response = file_get_contents($request);
