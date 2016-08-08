@@ -37,11 +37,7 @@ if($myFeed->isValid)
 
 
 get_header(); #defaults to theme header or header_inc.php
-?>
-<h1 align="center"><?=$config->titleTag?></h1>
 
-
-<?php
 
 get_footer(); #defaults to theme footer or footer_inc.php
 
@@ -108,7 +104,7 @@ select q.QuestionID, q.Question from sm16_questions q inner join sm16_surveys s 
 	           }
              
             }
-    
+    ?><h1 align="center">Choose Your Feed!!</h1><?php
          $max =  sizeof($Feeds);
             for($i=0; $i<$max;$i++){
                 
